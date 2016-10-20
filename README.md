@@ -13,7 +13,7 @@
 
 If you are interested in jumping directly to a future tutorial, the following tutorials are included in this series. Please note, while the tutorials are designed to build upon one another in a linear fashion, all required materials are provided with each seperate tutorial, allowing you should be able to dive straight in if you are interested in a particular topic.
 
-##Part One - Hello Endpoints
+##Part One - Your First Endpoint
 
 ###Goal of Tutorial
 **Build, deploy, and test a simple 'hello world' API using Python, Flask, Google Container Engine and Google Cloud Endpoints.**
