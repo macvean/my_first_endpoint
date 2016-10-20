@@ -11,3 +11,13 @@
 ###Prerequisites
 
 ###Your API Backend
+
+###Swagger Spec
+
+###Deploying Your API
+
+###Testing Your API
+
+###Viewing the Endpoints GUI
+
+###Next Episode
