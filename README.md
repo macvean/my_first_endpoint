@@ -1,8 +1,16 @@
 # Manage your API with Google Cloud Endpoints - Python & GKE
 
+#Part One - Your first Endpoint
+
 ##Welcome
 
 ##This Series
+1. Part One - Your First Endpoint
+2. Part Two - Updating your API
+3. Part Three - Securing your API - API Keys
+4. Part Four - oAuth based API Access
+5. Part Five - Sharing your API with other Users
+If you are interested in jumping directly to a future tutorial, the following tutorials are included in this series. Please note, while the tutorials are designed to build upon one another in a linear fashion, all required materials are provided with each seperate tutorial, allowing you should be able to dive straight in if you are interested in a particular topic.
 
 ##Part One - Hello Endpoints
 
