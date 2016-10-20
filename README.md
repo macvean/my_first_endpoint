@@ -27,7 +27,18 @@ Our API will have two methods:
 ###Assumptions
 This tutorial is designed to get you up and running with your first Google Cloud Endpoints API. Thus, while we will try to go slowly through each and every stage in the process, this is not a general Google Cloud Platform (GCP) or Google Container Enginer (GKE) tutorial. If you need help getting set up with GCP, please read the official getting started guides.
 
+Likewise, if you are new to Python or Flask, this might not be the tutorial for you. Or maybe it will be, because we will try to go easy.
+
+We assume you are working with Python 2.7, as the code is written using 2.7. All core concepts apply across versions (and indeed languages), but the code supplied is only tested with 2.7
+
 ###Prerequisites
+
+1. You have a Google Cloud Platform project, with billing enabled.
+2. You have Python 2.7 installed.
+3. You have the Cloud SDK installed.
+4. You have cURL installed.
+5. You have pip installed.
+6. You have virtualenv installed.
 
 ###Your API Backend
 
