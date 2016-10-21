@@ -42,6 +42,26 @@ We assume you are working with Python 2.7, as the code is written using 2.7. All
 
 ###Your API Backend
 
+Before we go through the process of defining, deploying, and testing our API, here is what the backend looks like:
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/hello")
+def hello():
+	return "Hello Endpoints"
+
+@app.route("/reverse/<input_string>", methods=['GET'])
+def reverse(input_string):
+	reversed_string = input_string[::-1]
+	return reversed_string
+
+if __name__ == "__main__":
+    app.run()
+```
+
 ###Swagger Spec
 
 ###Deploying Your API
