@@ -62,7 +62,12 @@ if __name__ == "__main__":
     app.run()
 ```
 
+We are not going to closely comment on the backend, given the simplicity of the design. This should look like a standard Python + Flask application. Nothing special is required here to work successfully with Google Cloud Endpoints.
+
 ###Swagger Spec
+In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your API, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
+
+Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
 ###Deploying Your API
 
