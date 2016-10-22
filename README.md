@@ -1,5 +1,18 @@
 # Manage your API with Google Cloud Endpoints - Python & GKE
 
+##This Series
+This tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints. The tutorials are as follows:
+
+1. Part One - Your First Endpoint (you are here)
+2. Part Two - Updating your API
+3. Part Three - Securing your API - API Keys
+4. Part Four - oAuth based API Access
+5. Part Five - Sharing your API with other Users
+
+Although the tutorials incrementally build upon one another, you should be able to dive into a particular topic, if you have a particular subject you are interested in learning.
+
+Okay, without further adieu, let's build and manage our first API with Google Cloud Endpoints. 
+
 #Part One - Your first Endpoint
 
 ##Welcome
@@ -13,17 +26,6 @@ Files included in this tutorial:
 3. **my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
 4. **Dockerfile** - Instructions for building the container image for your API.
 5. **requirements.txt** - The Python libraries to be installed in your container image.
-
-##This Series
-As a quick segway, this tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints.
-
-1. Part One - Your First Endpoint
-2. Part Two - Updating your API
-3. Part Three - Securing your API - API Keys
-4. Part Four - oAuth based API Access
-5. Part Five - Sharing your API with other Users
-
-If you are interested in jumping directly to a future tutorial, the following tutorials are included in this series. Please note, while the tutorials are designed to build upon one another in a linear fashion, all required materials are provided with each seperate tutorial, allowing you should be able to dive straight in if you are interested in a particular topic.
 
 ##Part One - Your First Endpoint
 
