@@ -71,9 +71,28 @@ Before explaining what is happening here, this is what our swagger spec will loo
 
 ###Getting Google Container Engine Ready
 Project prerequisites reminder
+
 Create your cluster:
 ```
 gcloud container clusters create api-cluster
+```
+
+Build your docker image from the Dockerfile attached
+
+```
+docker build -f /path/to/your/Dockerfile .
+```
+
+Tag your newly created image:
+
+```
+docker tag [YOUR IMAGE ID] gcr.io/[YOUR PROJECT ID]/endpoints-image
+```
+
+And now push the image to Google Container Registry
+
+```
+gcloud docker push gcr.io/andrewtestp/endpoints-image
 ```
 
 ###Deploying Your API
