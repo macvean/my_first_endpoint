@@ -6,11 +6,11 @@
 
 Files included in this tutorial:
 
-1.**my_first_endpoint.py** - A Python + Flask API backend.
-2.**swagger.yaml** - An OpenAPI specification for your API.
-3.**my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
-4.**Dockerfile** - Instructions for building the container image for your API.
-5.**requirements.txt** - The Python libraries to be installed in your container image.
+1. **my_first_endpoint.py** - A Python + Flask API backend.
+2. **swagger.yaml** - An OpenAPI specification for your API.
+3. **my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
+4. **Dockerfile** - Instructions for building the container image for your API.
+5. **requirements.txt** - The Python libraries to be installed in your container image.
 
 ##This Series
 As a quick segway, this tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints.
