@@ -9,7 +9,7 @@ This tutorial is the first of many in a series. By following all parts, you will
 4. Part Four - oAuth based API Access
 5. Part Five - Sharing your API with other Users
 
-Although the tutorials incrementally build upon one another, you should be able to dive into a particular topic, if you have a particular subject you are interested in learning.
+Although each part incrementally builds upon the earlier parts, you should be able to dive straight into a future tutorial if you have a particular subject you are interested in learning. 
 
 Okay, without further adieu, let's build and manage our first API with Google Cloud Endpoints. 
 
@@ -19,15 +19,15 @@ Okay, without further adieu, let's build and manage our first API with Google Cl
 ###Goal of this Tutorial
 **Build, deploy, and test a simple 'hello world' API using Python, Flask, Google Container Engine and Google Cloud Endpoints.**
 
-Files included in this tutorial:
+###Files included in this tutorial:
 
 1. **my_first_endpoint.py** - A Python + Flask API backend.
 2. **swagger.yaml** - An OpenAPI specification for your API.
-3. **my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
+3. **my_first_endpoints_GKE.yaml** - Configuration file to set-up your system. Most critically, it contains instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
 4. **Dockerfile** - Instructions for building the container image for your API.
 5. **requirements.txt** - The Python libraries to be installed in your container image.
 
-##Part One - Your First Endpoint
+###API Overview
 
 Our backend will be a simple Python + Flask application. The application will be run using Google Container Enigne. We will use Google Cloud Endpoints for its API management capabilities (which we will gradually add over the course of future tutorials).
 
@@ -51,7 +51,7 @@ We assume you are working with Python 2.7, as the code is written using 2.7. All
 5. You have pip installed.
 6. You have virtualenv installed.
 
-###Your API Backend
+##Your API Backend
 
 Before we go through the process of defining, deploying, and testing our API, here is what the backend looks like:
 
@@ -75,12 +75,12 @@ if __name__ == "__main__":
 
 We are not going to closely comment on the backend, given the simplicity of the design. This should look like a standard Python + Flask application. Nothing special is required here to work successfully with Google Cloud Endpoints.
 
-###Swagger Spec
+##Swagger Spec
 In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your API, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
 
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
-###Getting Google Container Engine Ready
+##Getting Google Container Engine Ready
 Project prerequisites reminder:
 1. You have create a Google Cloud Platform project, it has billing enabled, and you know the project ID.
 2. You have installed the Cloud SDK.
@@ -109,10 +109,10 @@ And now push the image to Google Container Registry
 gcloud docker push gcr.io/[YOUR PROJECT ID]/endpoints-image
 ```
 
-###Deploying Your API
+##Deploying Your API
 
-###Testing Your API
+##Testing Your API
 
-###Viewing the Endpoints GUI
+##Viewing the Endpoints GUI
 
-###Next Episode
+##Next Episode
