@@ -3,6 +3,8 @@
 #Part One - Your first Endpoint
 
 ##Welcome
+###Goal of this Tutorial
+**Build, deploy, and test a simple 'hello world' API using Python, Flask, Google Container Engine and Google Cloud Endpoints.**
 
 Files included in this tutorial:
 
@@ -24,9 +26,6 @@ As a quick segway, this tutorial is the first of many in a series. By following 
 If you are interested in jumping directly to a future tutorial, the following tutorials are included in this series. Please note, while the tutorials are designed to build upon one another in a linear fashion, all required materials are provided with each seperate tutorial, allowing you should be able to dive straight in if you are interested in a particular topic.
 
 ##Part One - Your First Endpoint
-
-###Goal of Tutorial
-**Build, deploy, and test a simple 'hello world' API using Python, Flask, Google Container Engine and Google Cloud Endpoints.**
 
 Our backend will be a simple Python + Flask application. The application will be run using Google Container Enigne. We will use Google Cloud Endpoints for its API management capabilities (which we will gradually add over the course of future tutorials).
 
