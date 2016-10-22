@@ -5,6 +5,7 @@
 ##Welcome
 
 Files included in this tutorial:
+
 1.**my_first_endpoint.py** - A Python + Flask API backend.
 2.**swagger.yaml** - An OpenAPI specification for your API.
 3.**my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
