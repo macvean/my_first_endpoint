@@ -4,7 +4,15 @@
 
 ##Welcome
 
+Files included in this tutorial:
+1.**my_first_endpoint.py** - A Python + Flask API backend.
+2.**swagger.yaml** - An OpenAPI specification for your API.
+3.**my_first_endpoints_GKE.yaml** - Configuration file to set up your system. Most critically, it contaisn instructions for both your API container, and the Endponints Server Proxy container which will handle API management.
+4.**Dockerfile** - Instructions for building the container image for your API.
+5.**requirements.txt** - The Python libraries to be installed in your container image.
+
 ##This Series
+As a quick segway, this tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints.
 1. Part One - Your First Endpoint
 2. Part Two - Updating your API
 3. Part Three - Securing your API - API Keys
@@ -70,7 +78,10 @@ In order to manage our API with Google Cloud Endpoints, we must provide a specif
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
 ###Getting Google Container Engine Ready
-Project prerequisites reminder
+Project prerequisites reminder:
+1. You have create a Google Cloud Platform project, it has billing enabled, and you know the project ID.
+2. You have installed the Cloud SDK.
+3. You have installed Docker.
 
 Create your cluster:
 ```
@@ -92,7 +103,7 @@ docker tag [YOUR IMAGE ID] gcr.io/[YOUR PROJECT ID]/endpoints-image
 And now push the image to Google Container Registry
 
 ```
-gcloud docker push gcr.io/andrewtestp/endpoints-image
+gcloud docker push gcr.io/[YOUR PROJECT ID]/endpoints-image
 ```
 
 ###Deploying Your API
