@@ -69,6 +69,13 @@ In order to manage our API with Google Cloud Endpoints, we must provide a specif
 
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
+###Getting Google Container Engine Ready
+Project prerequisites reminder
+Create your cluster:
+```
+gcloud container clusters create api-cluster
+```
+
 ###Deploying Your API
 
 ###Testing Your API
