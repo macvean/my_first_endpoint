@@ -14,6 +14,7 @@ Files included in this tutorial:
 
 ##This Series
 As a quick segway, this tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints.
+
 1. Part One - Your First Endpoint
 2. Part Two - Updating your API
 3. Part Three - Securing your API - API Keys
