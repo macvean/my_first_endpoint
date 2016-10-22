@@ -32,15 +32,16 @@ Okay, without further adieu, let's build and manage our first API with Google Cl
 Our backend will be a simple Python + Flask application. The application will be run using Google Container Enigne. We will use Google Cloud Endpoints for its API management capabilities (which we will gradually add over the course of future tutorials).
 
 Our API will have two methods: 
+
 1. 'hello' which will return the text 'Hello Endpoints'.
 2. 'reverse' which will take a given string and reverse it. 
 
 ###Assumptions
-This tutorial is designed to get you up and running with your first Google Cloud Endpoints API. Thus, while we will try to go slowly through each and every stage in the process, this is not a general Google Cloud Platform (GCP) or Google Container Enginer (GKE) tutorial. If you need help getting set up with GCP, please read the official getting started guides.
+This tutorial is designed to get you up and running with your first Google Cloud Endpoints API. Thus, while we will try to go slowly through each and every stage in the process. However, this is not a general Google Cloud Platform (GCP) or Google Container Enginer (GKE) tutorial. If you need help getting set up with GCP, please read the official getting started guides.
 
 Likewise, if you are new to Python or Flask, this might not be the tutorial for you. Or maybe it will be, because we will try to go easy.
 
-We assume you are working with Python 2.7, as the code is written using 2.7. All core concepts apply across versions (and indeed languages), but the code supplied is only tested with 2.7
+We assume you are working with Python 2.7, as the code is written and tested with 2.7. All of the core concepts, certainly with respect to the Google Cloud Endpoints features and capabilities, apply across versions (and indeed languages), but we cannot guarantee everything will just 'work' if you are following along with a different language or version.
 
 ###Prerequisites
 
@@ -50,6 +51,7 @@ We assume you are working with Python 2.7, as the code is written using 2.7. All
 4. You have cURL installed.
 5. You have pip installed.
 6. You have virtualenv installed.
+7. You have flask 0.11.1 installed.
 
 ##Your API Backend
 
@@ -73,17 +75,23 @@ if __name__ == "__main__":
     app.run()
 ```
 
-We are not going to closely comment on the backend, given the simplicity of the design. This should look like a standard Python + Flask application. Nothing special is required here to work successfully with Google Cloud Endpoints.
+We are not going to closely comment on the backend, given the simplicity of the design. This should look like a standard Python + Flask application. 
+
+You can see our two methods. Hello, which will be accessed through the /hello route, will simply return our welcome message. Reverse, which will be accessed through the /reverse route, takes an input string (passed in via the URL for the API - more on this later) and returns the reversed string.
+
+Importantly nothing special is required here for your API to work successfully with Google Cloud Endpoints. That is the core message here. This is a standard Python + Flask application.
 
 ##Swagger Spec
-In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your API, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
+In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (formerly known as Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your backend, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
 
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
 ##Getting Google Container Engine Ready
-Project prerequisites reminder:
+Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
 
-1. You have create a Google Cloud Platform project, it has billing enabled, and you know the project ID.
+As this is where we start working 'in the cloud', a quick reminder on the prerequisites:
+
+1. You have created a Google Cloud Platform project, it has billing enabled, and you know the project ID.
 2. You have installed the Cloud SDK.
 3. You have installed Docker.
 
@@ -97,24 +105,24 @@ gcloud auth login
 gcloud config set project [YOUR PROJECT ID]
 ```
 
-Create your cluster:
+Create your cluster, this is where we will be deploying our API, and the Endpoints Server Proxy to manage our API:
 ```
 gcloud container clusters create api-cluster
 ```
 
-Build your docker image from the Dockerfile attached
+Build your docker image from the Dockerfile attached. This will configure the container such that it can run our API backend successfully:
 
 ```
 docker build -f /path/to/your/Dockerfile .
 ```
 
-Tag your newly created image:
+Tag your newly created image. This is really a readability thing, for ease of identification of the image we just built:
 
 ```
 docker tag [YOUR IMAGE ID] gcr.io/[YOUR PROJECT ID]/endpoints-image
 ```
 
-And now push the image to Google Container Registry
+And now push the image to Google Container Registry:
 
 ```
 gcloud docker push gcr.io/[YOUR PROJECT ID]/endpoints-image
