@@ -82,9 +82,20 @@ Before explaining what is happening here, this is what our swagger spec will loo
 
 ##Getting Google Container Engine Ready
 Project prerequisites reminder:
+
 1. You have create a Google Cloud Platform project, it has billing enabled, and you know the project ID.
 2. You have installed the Cloud SDK.
 3. You have installed Docker.
+
+Ensure you are autheticated into the Cloud SDK, and you have set the SDK config to point to the correct project
+
+```
+gcloud auth login
+```
+
+```
+gcloud config set project [YOUR PROJECT ID]
+```
 
 Create your cluster:
 ```
