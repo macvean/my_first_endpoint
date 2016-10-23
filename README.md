@@ -94,7 +94,7 @@ info:
   description: "My first Endpoints API"
   title: "Hello API"
   version: "1.0.0"
-host: "andrewtestp.appspot.com"
+host: "YOUR PROJECT ID.appspot.com"
 basePath: "/"
 consumes:
 - "application/json"
@@ -134,7 +134,7 @@ paths:
 
 ```
 
-**TODO:** Mention you need to add project ID to the top of the swagger spec.
+**If you don't care about the contentes of the swagger spec, and just want to quickly run this API, all you need to do is change the 'host' line to contain your project ID. For example, host: "YOUR PROJECT ID.appspot.com" -> host: "myproject.appspot.com".**
 
 ##Getting Google Container Engine Ready
 Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
