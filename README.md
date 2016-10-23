@@ -88,6 +88,52 @@ In order to manage our API with Google Cloud Endpoints, we must provide a specif
 
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
+```
+swagger: "2.0"
+info:
+  description: "My first Endpoints API"
+  title: "Hello API"
+  version: "1.0.0"
+host: "andrewtestp.appspot.com"
+basePath: "/"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+- "https"
+paths:
+  "/reverse/{input_string}":
+    get:
+      description: "Reverse the input string."
+      operationId: "reverse"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Reverse"
+          schema:
+            type: string
+      parameters:
+      - description: "String to reverse"
+        in: path
+        name: input_string
+        type: string
+        required: true  
+  "/hello":
+    get:
+      description: "A simple hello world API"
+      operationId: "hello"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Hello"
+          schema:
+            type: string
+
+```
+
 **TODO:** Mention you need to add project ID to the top of the swagger spec.
 
 ##Getting Google Container Engine Ready
