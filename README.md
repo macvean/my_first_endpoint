@@ -86,6 +86,8 @@ In order to manage our API with Google Cloud Endpoints, we must provide a specif
 
 Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
 
+**TODO:** Mention you need to add project ID to the top of the swagger spec.
+
 ##Getting Google Container Engine Ready
 Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
 
@@ -129,6 +131,22 @@ gcloud docker push gcr.io/[YOUR PROJECT ID]/endpoints-image
 ```
 
 ##Deploying Your API
+
+First, we need to let the Google service manager know about our API. This doesn't deploy our backend, but allows Google Cloud Endpoints to know how our API is designed, allowing us to make use of all its API management functionality.
+
+Please note, this command is currently in Beta, so if you haven't already, you will need to install the beta components for gcloud.
+
+```
+gcloud beta service-management deploy swagger.yaml
+```
+
+There will be a bit of output from this command, but the most important thing to note is this line:
+
+```
+Service Configuration with version [VERSION] uploaded for service [YOUR PROJECT ID.appspot.com]
+```
+
+You will need the version and the service (although you should already know this, you set it in your swagger.yaml) later when configuring your GKE cluster.
 
 ##Testing Your API
 
