@@ -136,6 +136,9 @@ paths:
 
 **If you don't care about the contentes of the swagger spec, and just want to quickly run this API, all you need to do is change the 'host' line to contain your project ID. For example, host: "YOUR PROJECT ID.appspot.com" -> host: "myproject.appspot.com".**
 
+###The Spec, Explained
+**TODO: EXPLAIN EACH PART OF SWAGGER SPEC**
+
 ##Getting Google Container Engine Ready
 Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
 
