@@ -72,14 +72,16 @@ def reverse(input_string):
 	return reversed_string
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=8081)
 ```
 
 We are not going to closely comment on the backend, given the simplicity of the design. This should look like a standard Python + Flask application. 
 
 You can see our two methods. Hello, which will be accessed through the /hello route, will simply return our welcome message. Reverse, which will be accessed through the /reverse route, takes an input string (passed in via the URL for the API - more on this later) and returns the reversed string.
 
-Importantly nothing special is required here for your API to work successfully with Google Cloud Endpoints. That is the core message here. This is a standard Python + Flask application.
+Importantly nothing special is required here for your API to work successfully with Google Cloud Endpoints, other than one thing: the port we are serving the API from. Rather than the default flask port (5000) we are running on 8081. This is due to the way the Endpoints Server Proxy (which does the API management magic) is configured by default. It will take in requests to our API and route them to port 8081.
+
+The core message though is that this is a standard Python + Flask application.
 
 ##Swagger Spec
 In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (formerly known as Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your backend, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
