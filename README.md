@@ -134,7 +134,7 @@ gcloud docker push gcr.io/[YOUR PROJECT ID]/endpoints-image
 
 First, we need to let the Google service manager know about our API. This doesn't deploy our backend, but allows Google Cloud Endpoints to know how our API is designed, allowing us to make use of all its API management functionality.
 
-Please note, this command is currently in Beta, so if you haven't already, you will need to install the beta components for gcloud.
+Please note, this command is currently in Beta, so if you haven't already, you will need to install the beta components for gcloud (when you run the command, you will be kicked into the download flow automatically, if you need to).
 
 ```
 gcloud beta service-management deploy swagger.yaml
@@ -146,7 +146,36 @@ There will be a bit of output from this command, but the most important thing to
 Service Configuration with version [VERSION] uploaded for service [YOUR PROJECT ID.appspot.com]
 ```
 
-You will need the version and the service (although you should already know this, you set it in your swagger.yaml) later when configuring your GKE cluster.
+You will need the version and the service (although you should already know the service, you set it in your swagger.yaml) later when configuring your GKE cluster.
+
+Open the my_first_endpoints_GKE.yaml file, and update the service and version fields with the values returned from the prior command. 
+
+```
+containers:
+      - name: esp
+        image: b.gcr.io/endpoints/endpoints-runtime:0.3
+        args: [
+          "-p", "8080",
+          "-a", "127.0.0.1:8081",
+          "-s", "[YOUR PROJECT ID].appspot.com",
+          "-v", "[VERSION]",
+        ]
+```
+
+To be clear, don't include the square brackets [ ], your service (-s) and version (-v) should look something like myproject.appspot.com and 2016-10-23r0
+
+Let's now deploy our API backend to GKE, along with the Endpoints Server proxy.
+
+```
+kubectl create -f my_first_endpoints_GKE.yaml
+```
+
+And now get the external IP, BECAUSE WE ARE NEARlY READY TO CALL OUR API
+
+```
+kubectl get service
+```
+
 
 ##Testing Your API
 
