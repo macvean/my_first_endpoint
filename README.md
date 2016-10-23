@@ -192,3 +192,13 @@ kubectl get service
 ##Viewing the Endpoints GUI
 
 ##Next Episode
+
+That's it for Part One. To recap, we built a simple API backend, using Python + Flask. We created a Docker container image to successfully run our API backend. We spec'd out our API using the OpenAPI (swagger) spec. We set up Google Container Engine to serve our API. We deployed our API, along with the Endpoints Server Proxy to GKE. We tested our API and saw that it was serving traffic. We viewed the usage graphs and logs for our API in the Google Cloud Console.
+
+But, what next?
+
+Properly versioning an API is critical. You don't want to break your clients. In Part Two, we discuss API versioning, tweak our API, and deploy a new version.
+
+In Part Three, we will then protect access to our API using API keys. 
+
+Until next time!
