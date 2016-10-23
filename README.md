@@ -166,6 +166,14 @@ To be clear, don't include the square brackets [ ], your service (-s) and versio
 
 Let's now deploy our API backend to GKE, along with the Endpoints Server proxy.
 
+First, we need to authenticate kubectl to the cluster we previously created:
+
+```
+gcloud container clusters get-credentials api-cluster
+```
+
+Then we deploy our API:
+
 ```
 kubectl create -f my_first_endpoints_GKE.yaml
 ```
