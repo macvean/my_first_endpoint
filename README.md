@@ -181,8 +181,8 @@ spec:
         args: [
           "-p", "8080",
           "-a", "127.0.0.1:8081",
-          "-s", "andrewtestp.appspot.com",
-          "-v", "2016-10-23r0",
+          "-s", "[YOUR PROJECT ID].appspot.com",
+          "-v", "[YOUR API VERSION]",
         ]
         ports:
           - containerPort: 8080
@@ -193,6 +193,61 @@ spec:
 ```
 
 **If you don't care about the contentes of the config file, and just want to quickly run this API, all you need to do is update a few fields, which are explained in greater detail in the next secion: "Getting Google Container Engine Ready".**
+
+###The Config Explained###
+This is a fairly standard configuration file for Kubernetes, so if you are familiar with GKE / Kubernetes, there should be no surprises here. In this section, we will go section by section and try to explain what is going on.
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-endpoint
+```
+We are calling our service first-endpoint
+
+```
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: first-endpoint
+  type: LoadBalancer
+```
+We are serving our API on port 80, using TCP. We will be applying this port configuration to all the sections labeled with 'app: first-endpoint'
+
+```
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: first-endpoint
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: first-endpoint
+```
+Here we see that we are applying our previously discussed port setting to our Kubernetes deployment (which we are also calling first-endpoint). We only need one pod replica for this hello world example.
+
+```
+    spec:
+      containers:
+      - name: esp
+        image: b.gcr.io/endpoints/endpoints-runtime:0.3
+        args: [
+          "-p", "8080",
+          "-a", "127.0.0.1:8081",
+          "-s", "[YOUR PROJECT ID].appspot.com",
+          "-v", "[YOUR API VERSION]",
+        ]
+        ports:
+          - containerPort: 8080
+```
+
+
 
 ##Getting Google Container Engine Ready
 Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
