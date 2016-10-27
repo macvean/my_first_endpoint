@@ -1,5 +1,9 @@
 # Manage your API with Google Cloud Endpoints - Python & GKE
 
+A series of tutorials to help you build and manage your first API using Google Container Enginer and Google Cloud Endpoints. This series focuses on Python and Flask.
+
+In this first part, we build and deploy a simple Hello World API, taking you from a fresh empty project to first working API.
+
 ##This Series
 This tutorial is the first of many in a series. By following all parts, you will incrementaly build a fully fledged web API, incorporating many of the core features and capabilities of Google Cloud Endpoints. The tutorials are as follows:
 
@@ -138,6 +142,57 @@ paths:
 
 ###The Spec, Explained
 **TODO: EXPLAIN EACH PART OF SWAGGER SPEC**
+
+##Kubernetes Deployment Config at a Glance
+
+In order to successfully deploy our API, we will be utilizing a configuration file. This ensures that the container for our API backend, and the container for the Google Cloud Endpoints API proxy (which handles the requests and does the management magic) are deployed correctly, and listening to the correct ports. 
+
+First, this is what the config file looks like:
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-endpoint
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: first-endpoint
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: first-endpoint
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: first-endpoint
+    spec:
+      containers:
+      - name: esp
+        image: b.gcr.io/endpoints/endpoints-runtime:0.3
+        args: [
+          "-p", "8080",
+          "-a", "127.0.0.1:8081",
+          "-s", "andrewtestp.appspot.com",
+          "-v", "2016-10-23r0",
+        ]
+        ports:
+          - containerPort: 8080
+      - name: api
+        image: gcr.io/[YOUR PROJECT ID]/endpoints-image:latest
+        ports:
+          - containerPort: 8081
+```
+
+**If you don't care about the contentes of the config file, and just want to quickly run this API, all you need to do is update a few fields, which are explained in greater detail in the next secion: "Getting Google Container Engine Ready".**
 
 ##Getting Google Container Engine Ready
 Ok, so with our simple backend build, and our API spec'd out with Swagger, let's deploy it to GKE and manage it with Google Cloud Endpoints.
