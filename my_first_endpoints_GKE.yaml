@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: first-endpoint
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: first-endpoint
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: first-endpoint
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: first-endpoint
+    spec:
+      containers:
+      - name: esp
+        image: b.gcr.io/endpoints/endpoints-runtime:0.3
+        args: [
+          "-p", "8080",
+          "-a", "127.0.0.1:8081",
+          "-s", "[YOUR PROJECT ID].appspot.com",
+          "-v", "[YOUR API VERSION]",
+        ]
+        ports:
+          - containerPort: 8080
+      - name: api
+        image: gcr.io/[YOUR PROJECT ID]/endpoints-image:latest
+        ports:
+          - containerPort: 8081

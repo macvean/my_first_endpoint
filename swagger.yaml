@@ -1,0 +1,43 @@
+swagger: "2.0"
+info:
+  description: "My first Endpoints API"
+  title: "Hello API"
+  version: "1.0.0"
+host: "YOUR PROJECT ID.appspot.com"
+basePath: "/"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+- "https"
+paths:
+  "/reverse/{input_string}":
+    get:
+      description: "Reverse the input string."
+      operationId: "reverse"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Reverse"
+          schema:
+            type: string
+      parameters:
+      - description: "String to reverse"
+        in: path
+        name: input_string
+        type: string
+        required: true  
+  "/hello":
+    get:
+      description: "A simple hello world API"
+      operationId: "hello"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Hello"
+          schema:
+            type: string
+
