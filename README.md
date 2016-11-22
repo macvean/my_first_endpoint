@@ -279,8 +279,11 @@ Build your docker image from the Dockerfile attached. This will configure the co
 docker build -f /path/to/your/Dockerfile .
 ```
 
-Tag your newly created image. This is really a readability thing, for ease of identification of the image we just built:
+Tag your newly created image. This is really a readability thing, for ease of identification of the image we just built. First list images to get your id, then tag it:
 
+```
+docker images
+```
 ```
 docker tag [YOUR IMAGE ID] gcr.io/[YOUR PROJECT ID]/endpoints-image
 ```
