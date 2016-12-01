@@ -90,7 +90,9 @@ The core message though is that this is a standard Python + Flask application.
 ##Swagger Spec
 In order to manage our API with Google Cloud Endpoints, we must provide a specification for it using the OpenAPI Specification framework (formerly known as Swagger). This allows the Endpoints proxy to appropriately manage and monitor the requests to your backend, allowing for all the core features of Endpoints such as authentication, usage monitoring, and logging. 
 
-Before explaining what is happening here, this is what our swagger spec will look like for our simple Endpoints API.
+The core message here is that, once more, no Endpoints specific content is required here. If you are familiar with the OpenAPI Spec, this should all be familiar to you. Please also consult the official OpenAPI documentation, should you seek further information.
+
+Before explaining what is happening, this is what our swagger spec will look like for our simple Endpoints API.
 
 ```
 swagger: "2.0"
@@ -141,7 +143,53 @@ paths:
 **If you don't care about the contentes of the swagger spec, and just want to quickly run this API, all you need to do is change the 'host' line to contain your project ID. For example, host: "YOUR PROJECT ID.appspot.com" -> host: "myproject.appspot.com".**
 
 ###The Spec, Explained
-**TODO: EXPLAIN EACH PART OF SWAGGER SPEC**
+Here, the core parts of the spec is explained, piece by piece. 
+**TODO: EXPLAIN EACH PART OF SWAGGER SPEC WiP**
+First:
+
+```
+swagger: "2.0"
+info:
+  description: "My first Endpoints API"
+  title: "Hello API"
+  version: "1.0.0"
+host: "YOUR PROJECT ID.appspot.com"
+basePath: "/"
+```
+Here, we provide a description of the API. This is important, as this will appear in the Google Cloud Console when you go to view your API. So, if you are building an API to share with another team, you would want a meaningful description. 
+
+//Talk about the implications of the version
+
+```
+host: "YOUR PROJECT ID.appspot.com"
+```
+Additionally, we define the host for our API. You must update the host to match your project ID. For example, **host: "YOUR PROJECT ID.appspot.com" -> host: "myproject.appspot.com".**
+
+```
+consumes:
+- "application/json"
+produces:
+- "application/json"
+schemes:
+- "https"
+```
+These are all generic OpenAPI fields, nothing Endpoints specific here. We state what MIME type the API can consume and produce, and the transfer protocol for the API. These default values should be fine for you.
+
+Next, we define the methods for the API as **paths** Starting with the simpler **hello** method:
+
+```
+  "/hello":
+    get:
+      description: "A simple hello world API"
+      operationId: "hello"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Hello"
+          schema:
+            type: string
+```
 
 ##Kubernetes Deployment Config at a Glance
 
