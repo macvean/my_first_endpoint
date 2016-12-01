@@ -41,7 +41,7 @@ Our API will have two methods:
 2. 'reverse' which will take a given string and reverse it. 
 
 ###Assumptions
-This tutorial is designed to get you up and running with your first Google Cloud Endpoints API. Thus, while we will try to go slowly through each and every stage in the process. However, this is not a general Google Cloud Platform (GCP) or Google Container Enginer (GKE) tutorial. If you need help getting set up with GCP, please read the official getting started guides.
+This tutorial is designed to get you up and running with your first Google Cloud Endpoints API. Thus, we will try to go slowly through each and every stage in the process. However, this is not a general Google Cloud Platform (GCP) or Google Container Enginer (GKE) tutorial. If you need help getting set up with GCP, please read the official getting started guides.
 
 Likewise, if you are new to Python or Flask, this might not be the tutorial for you. Or maybe it will be, because we will try to go easy.
 
