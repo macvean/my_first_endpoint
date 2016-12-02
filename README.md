@@ -398,8 +398,30 @@ kubectl get service
 
 
 ##Testing Your API
+Let's see if it works! 
+
+Using cURL, you can make some dummy API requests:
+
+```
+curl http://YOUR_EXTERNAL_IP_HERE/hello
+```
+or maybe this:
+```
+curl http://YOUR_EXTERNAL_IP_HERE/reverse/abcdefg
+```
+
+In future tutorials, we will highlight how to make more advanced requests, such as passing in particular types of content, or what to do when your API is protected by API keys.
 
 ##Viewing the Endpoints GUI
+Now that we have some traffic, lets go and see the Endpoints GUI, which is within the Google Cloud Console. The following steps will take you where you need to go:
+
+1. Go to console.cloud.google.com
+2. Log in to your account and project
+3. In the search box, type the name of your API "Hello API". Alternatively, go to the Endpoints section of the left navigation (under Tools), then select your API.
+4. Explore the GUI! Explore the graphs, check-out the logs, and bask in the success of your deployed API.
+
+##CONGRATULATIONS
+You successfully deployed your first API
 
 ##Next Episode
 
